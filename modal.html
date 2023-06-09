@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal</title>
+    <style>
+      .modal {
+        z-index: 9000;
+        visibility: hidden;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 100%;
+        left: 100%;
+        right: 0;
+        bottom: 0;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        pointer-events: none;
+        transition-duration: 0.0001s;
+        opacity: 0;
+        transition: visibility 0s ease 0.3s, top 0s ease 0.3s, left 0s ease 0.3s,
+          opacity 0.3s ease 0s;
+      }
+      .modal-window {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+        border-radius: 8px;
+        background: #fff;
+      }
+      .modal-header {
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 8px 16px 0;
+      }
+      .modal-title {
+        flex: 1 0 0;
+      }
+      .modal-close {
+        margin-left: auto;
+        width: 64px;
+        height: 64px;
+      }
+      .modal-body {
+        overflow: auto;
+        flex: 1 0 auto;
+        position: relative;
+        padding: 16px;
+      }
+      .modal-footer {
+        position: relative;
+        padding: 0 16px 16px;
+      }
+
+      .modal.is-open {
+        visibility: visible;
+        top: 0;
+        left: 0;
+        pointer-events: auto;
+        opacity: 1;
+        transition: opacity 0.3s ease 0s;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" id="open-modal-a">modal-a open</button>
+
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, aut.
+    </p>
+    <p>Molestias id ad ea totam nihil perferendis est fugit tenetur?</p>
+    <p>Non placeat sint nam minima, nemo dicta quasi tempora sequi.</p>
+    <p>Quod nam quo ad officiis nemo similique architecto ut molestias!</p>
+    <p>
+      Ipsam molestias dolor reiciendis ratione! Nulla recusandae et nisi in!
+    </p>
+    <p>Unde explicabo earum porro corporis tempora a atque pariatur soluta.</p>
+    <p>
+      Laborum inventore atque nostrum blanditiis molestias, in quas dignissimos
+      consequuntur?
+    </p>
+    <p>Quo, deleniti nam iusto incidunt odio qui! Deleniti, eum explicabo!</p>
+    <p>
+      Exercitationem aliquam ad molestias a dicta adipisci hic ipsa suscipit.
+    </p>
+    <p>
+      Repellendus animi molestiae dolores magni nobis adipisci aut, aperiam
+      minima?
+    </p>
+    <p>
+      Excepturi incidunt possimus fugiat ipsa at voluptatibus, delectus vel
+      minima?
+    </p>
+    <p>Sunt voluptas qui autem vero ab assumenda itaque praesentium quis!</p>
+    <p>
+      Facilis animi dolores id molestias maxime maiores. Veniam, molestiae
+      similique.
+    </p>
+    <p>
+      Eos sunt hic doloremque placeat voluptatibus vero dolore esse doloribus?
+    </p>
+    <p>
+      Vitae accusantium ullam commodi recusandae optio quod aliquid, voluptas
+      beatae!
+    </p>
+    <p>
+      Provident iusto sapiente blanditiis aliquid officiis quae nulla aspernatur
+      laudantium.
+    </p>
+    <p>
+      Maxime veniam sapiente cupiditate molestias adipisci accusamus eos?
+      Praesentium, molestiae.
+    </p>
+    <p>
+      Officia obcaecati eligendi quaerat, sapiente temporibus ipsum quibusdam!
+      Id, rem!
+    </p>
+    <p>
+      Eum velit consequatur perspiciatis molestias minus recusandae sed, saepe
+      culpa!
+    </p>
+    <p>
+      Totam illo quisquam placeat, et iure exercitationem facilis quo omnis!
+    </p>
+    <p>
+      Pariatur, necessitatibus aliquid perspiciatis error rerum laboriosam dicta
+      labore minima.
+    </p>
+    <p>Est porro neque corrupti quia sed vitae doloribus excepturi iure.</p>
+    <p>
+      Perspiciatis inventore itaque autem tempora quae numquam ex sint tenetur.
+    </p>
+    <p>Quod nesciunt provident facere impedit iusto nisi qui iste eos?</p>
+    <p>
+      Atque nulla obcaecati commodi enim suscipit esse quibusdam impedit sequi.
+    </p>
+    <p>
+      Voluptatum beatae totam suscipit? Dolorem soluta reprehenderit iste libero
+      cupiditate.
+    </p>
+    <p>
+      Neque unde perferendis deserunt vero culpa delectus deleniti consequuntur.
+      Repudiandae!
+    </p>
+    <p>Dignissimos at eum laborum magni odio est, minima necessitatibus vel!</p>
+    <p>
+      Consequatur vel assumenda soluta ullam voluptates cumque ex, hic
+      inventore.
+    </p>
+    <p>
+      Inventore dolores, repellat error magni facere eius nobis accusamus omnis.
+    </p>
+    <p>In aperiam commodi eos minus odit rem cum possimus molestiae.</p>
+
+    <button type="button" id="open-modal-b">modal-b open</button>
+
+    <p>Illo sequi libero ex quasi, asperiores blanditiis delectus earum quo.</p>
+    <p>Quo voluptas reprehenderit quis ab nemo modi vero nam repudiandae!</p>
+    <p>
+      Nesciunt, sit voluptatem. Ad repellat molestias vitae, aperiam beatae
+      corporis.
+    </p>
+    <p>
+      Molestiae ex nisi aspernatur labore delectus illum eveniet culpa magni.
+    </p>
+    <p>Quidem, a in voluptates ipsa veniam inventore libero ratione illo?</p>
+    <p>
+      Culpa, ut qui architecto atque praesentium eius nihil mollitia temporibus?
+    </p>
+    <p>
+      Ut impedit esse temporibus fugit cupiditate eligendi dignissimos quos
+      minima!
+    </p>
+    <p>
+      Voluptatum maxime minus adipisci placeat voluptates. Soluta pariatur
+      adipisci quidem.
+    </p>
+    <p>
+      Iusto, dolores? Debitis, sapiente corrupti. Eum accusantium harum
+      veritatis aspernatur.
+    </p>
+    <p>Ipsam reiciendis numquam, vel ducimus ea nihil ab ipsa est.</p>
+    <p>Nemo enim ab excepturi esse, eos repudiandae dignissimos vero maxime?</p>
+    <p>
+      Assumenda, numquam sint! Distinctio, dolorem excepturi quasi molestias
+      laudantium praesentium.
+    </p>
+    <p>Esse magni, id iure reprehenderit non fugiat error ullam unde!</p>
+    <p>Recusandae, modi debitis odio facilis aliquid libero rem eaque eos!</p>
+    <p>Eligendi quo maxime, saepe voluptas non earum ipsum facere dicta!</p>
+    <p>
+      Corporis quia molestiae fugit tempora incidunt cupiditate totam. Ad,
+      facilis?
+    </p>
+    <p>Aliquam, quos? Qui fugit quos laborum pariatur ex repellat aperiam.</p>
+    <p>
+      Officia, sapiente! Veniam facilis repellat voluptates beatae labore
+      similique. Beatae?
+    </p>
+    <p>Ex reiciendis pariatur adipisci dolor cum sequi repellendus id ipsum!</p>
+
+    <div
+      class="modal"
+      role="dialog"
+      id="modal-a"
+      data-type=""
+      data-size=""
+      data-direction=""
+    >
+      <div class="modal-window">
+        <div class="modal-header">
+          <h2 class="modal-title">modal title</h2>
+          <button
+            type="button"
+            class="modal-close"
+            data-modal="close"
+            aria-label="닫기"
+          >
+            닫기
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-content">
+            <button type="button" id="open-modal-c">modal-b open</button>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>At voluptates quasi perspiciatis eaque?</p>
+            <p>Adipisci quam voluptas accusamus aperiam?</p>
+            <p>Repellat vitae totam reiciendis iure!</p>
+            <p>Beatae labore tenetur dignissimos fuga!</p>
+            <p>Eos cum magni ipsam sapiente.</p>
+            <p>Aut nisi maxime similique veritatis.</p>
+            <!-- <p>Rem delectus quaerat nemo mollitia!</p>
+          <p>Deleniti perspiciatis architecto facilis distinctio?</p>
+          <p>Aliquid sit provident perferendis molestias!</p>
+          <p>Quia rerum ratione nam distinctio?</p>
+          <p>Repellendus modi ut soluta maiores!</p>
+          <p>Quaerat ducimus saepe beatae inventore.</p>
+          <p>Quibusdam nam distinctio consectetur tempora.</p>
+          <p>Repudiandae ipsa fugiat libero recusandae.</p>
+          <p>Eaque amet repellendus eveniet corporis!</p>
+          <p>Hic excepturi facilis maiores suscipit?</p>
+          <p>Distinctio, consequuntur! Nesciunt, repudiandae soluta.</p>
+          <p>Est iure maiores corporis quibusdam!</p>
+          <p>Eligendi facilis veniam soluta totam!</p> -->
+
+            <input type="text" />
+            <input type="text" />
+            <button type="button">button</button>
+          </div>
+        </div>
+        <div class="modal-footer">modal-footer</div>
+      </div>
+    </div>
+
+    <div
+      class="modal"
+      role="dialog"
+      id="modal-b"
+      data-type=""
+      data-size=""
+      data-direction=""
+      data-esc=""
+    >
+      <div class="modal-window">
+        <div class="modal-header">
+          <h2 class="modal-title">modal title</h2>
+          <button
+            type="button"
+            class="modal-close"
+            data-modal="close"
+            aria-label="닫기"
+          >
+            닫기
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-content">
+            <p>Lorem ipsum dolor sit amet.</p>
+
+            <input type="text" />
+            <input type="text" />
+            <button type="button">button</button>
+          </div>
+        </div>
+        <div class="modal-footer">modal-footer</div>
+      </div>
+    </div>
+
+    <div class="modal" role="dialog" id="modal-c">
+      <div class="modal-window">
+        <div class="modal-header">
+          <h2 class="modal-title">modal title</h2>
+          <button
+            type="button"
+            class="modal-close"
+            data-modal="close"
+            aria-label="닫기"
+          >
+            닫기
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-content">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+
+            <input type="text" />
+            <input type="text" />
+            <button type="button">button</button>
+          </div>
+        </div>
+        <div class="modal-footer">modal-footer</div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelector('#open-modal-a')
+        .addEventListener('click', function () {
+          modal.open('#modal-a', {
+            // type: '',
+            // size: '',
+            // direction: '',
+            // esc: true,
+          });
+        });
+      document
+        .querySelector('#open-modal-b')
+        .addEventListener('click', function () {
+          modal.open('#modal-b', {
+            // type: '',
+            // size: '',
+            // direction: '',
+            esc: false,
+          });
+        });
+      document
+        .querySelector('#open-modal-c')
+        .addEventListener('click', function () {
+          modal.open('#modal-c', {
+            // type: '',
+            // size: '',
+            // direction: '',
+            // esc: false,
+          });
+        });
+
+      document
+        .querySelector('#modal-a')
+        .addEventListener('modal:opened', function (event) {
+          console.log(`${event.type} ${event.currentTarget.id}`);
+        });
+      document
+        .querySelector('#modal-b')
+        .addEventListener('modal:opened', function (event) {
+          console.log(`${event.type} ${event.currentTarget.id}`);
+        });
+      document
+        .querySelector('#modal-c')
+        .addEventListener('modal:opened', function (event) {
+          console.log(`${event.type} ${event.currentTarget.id}`);
+        });
+
+      document
+        .querySelector('#modal-a')
+        .addEventListener('modal:closed', function (event) {
+          console.log(`${event.type} ${event.currentTarget.id}`);
+        });
+      document
+        .querySelector('#modal-b')
+        .addEventListener('modal:closed', function (event) {
+          console.log(`${event.type} ${event.currentTarget.id}`);
+        });
+      document
+        .querySelector('#modal-c')
+        .addEventListener('modal:closed', function (event) {
+          console.log(`${event.type} ${event.currentTarget.id}`);
+        });
+
+      const modal = (function () {
+        const SELECTOR = {
+          portal: 'body',
+          btnCloseModal: '[data-modal="close"]',
+        };
+
+        const modalData = {};
+
+        const defaultOptions = {
+          type: 'normal',
+          size: 'md',
+          direction: 'static',
+          esc: true,
+        };
+
+        const openModal = function (modalSelector, options) {
+          const modal = document.querySelector(modalSelector);
+          const customOptions = {};
+
+          modalData[modalSelector] = {};
+          modalData[modalSelector].modal = modal;
+          modalData[modalSelector].prevFocusElement = document.activeElement;
+          modalData[modalSelector].scrolltop =
+            document.documentElement.scrollTop || document.body.scrollTop;
+
+          if (
+            typeof options !== undefined &&
+            (typeof options === 'object' ||
+              Object.prototype.toString.call(options) === '[object Object]')
+          ) {
+            Object.keys(defaultOptions).forEach(function (optionsKey) {
+              if (
+                typeof options[optionsKey] !== undefined &&
+                options[optionsKey] !== ''
+              ) {
+                customOptions[optionsKey] = options[optionsKey];
+              }
+              if (
+                typeof modal.dataset[optionsKey] !== undefined &&
+                modal.dataset[optionsKey] !== ''
+              ) {
+                customOptions[optionsKey] = modal.dataset[optionsKey];
+              }
+            });
+          }
+
+          const mergedOptions = Object.assign(
+            {},
+            defaultOptions,
+            customOptions
+          );
+
+          document.querySelector(SELECTOR.portal).appendChild(modal);
+          modal.offsetHeight;
+
+          document.documentElement.classList.add('modal-open');
+          document.body.style.overflow = 'hidden';
+
+          modal.setAttribute('tabindex', -1);
+          modal.classList.add('is-open');
+
+          modalData[modalSelector].handleOpenTransitionEnd =
+            transitionEndCallback;
+          modal.addEventListener(
+            'transitionend',
+            modalData[modalSelector].handleOpenTransitionEnd
+          );
+
+          function transitionEndCallback() {
+            modal.dispatchEvent(new CustomEvent('modal:opened'));
+
+            modal.focus();
+
+            modal.removeEventListener(
+              'transitionend',
+              modalData[modalSelector].handleOpenTransitionEnd
+            );
+          }
+
+          modalData[modalSelector].handleCloseModal = function (event) {
+            closeModal(modalSelector, mergedOptions);
+          };
+          modal
+            .querySelectorAll(SELECTOR.btnCloseModal)
+            .forEach(function (modalClose) {
+              if (modalClose) {
+                modalClose.addEventListener(
+                  'click',
+                  modalData[modalSelector].handleCloseModal
+                );
+              }
+            });
+
+          if (mergedOptions.esc) {
+            modalData[modalSelector].handleEscapeModal = function (event) {
+              if (modal.children[0].contains(event.target) === false) {
+                closeModal(modalSelector, mergedOptions);
+              }
+            };
+            modal.addEventListener(
+              'click',
+              modalData[modalSelector].handleEscapeModal
+            );
+          }
+
+          modalData[modalSelector].handleFocusTrap = function (event) {
+            focusTrap(event, modalSelector, mergedOptions);
+          };
+          modal.addEventListener(
+            'keydown',
+            modalData[modalSelector].handleFocusTrap
+          );
+        };
+
+        const closeModal = function (modalSelector, mergedOptions) {
+          const modal = document.querySelector(modalSelector);
+
+          modal.classList.remove('is-open');
+
+          modalData[modalSelector].handleCloseTransitionEnd =
+            transitionEndCallback;
+          modal.addEventListener(
+            'transitionend',
+            modalData[modalSelector].handleCloseTransitionEnd
+          );
+
+          function transitionEndCallback() {
+            if (Object.keys(modalData).length <= 1) {
+              document.documentElement.classList.remove('modal-open');
+              document.body.style.overflow = '';
+            }
+
+            modal.dispatchEvent(new CustomEvent('modal:closed'));
+
+            modalData[modalSelector].prevFocusElement.focus();
+
+            modal.removeEventListener(
+              'transitionend',
+              modalData[modalSelector].handleCloseTransitionEnd
+            );
+
+            delete modalData[modalSelector];
+          }
+
+          modal
+            .querySelectorAll(SELECTOR.btnCloseModal)
+            .forEach(function (modalClose) {
+              if (modalClose) {
+                modalClose.removeEventListener(
+                  'click',
+                  modalData[modalSelector].handleCloseModal
+                );
+              }
+            });
+
+          if (mergedOptions.esc) {
+            modal.removeEventListener(
+              'click',
+              modalData[modalSelector].handleEscapeModal
+            );
+          }
+
+          modal.removeEventListener(
+            'keydown',
+            modalData[modalSelector].handleFocusTrap
+          );
+        };
+
+        const focusTrap = function (event, modalSelector, mergedOptions) {
+          const modal = document.querySelector(modalSelector);
+          const focusElements = modal.querySelectorAll(
+            'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]'
+          );
+          const firstFocusElement = focusElements[0];
+          const lastFocusElement = focusElements[focusElements.length - 1];
+
+          if (event.key === 'Tab') {
+            if (event.shiftKey) {
+              if (document.activeElement === firstFocusElement) {
+                event.preventDefault();
+                lastFocusElement.focus();
+              }
+            } else {
+              if (document.activeElement === lastFocusElement) {
+                event.preventDefault();
+                firstFocusElement.focus();
+              }
+            }
+          }
+
+          if (event.key === 'Escape' && mergedOptions.esc) {
+            closeModal(modalSelector, mergedOptions);
+          }
+        };
+
+        return {
+          open: openModal,
+          close: closeModal,
+        };
+      })();
+    </script>
+  </body>
+</html>

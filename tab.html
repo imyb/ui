@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tab</title>
+    <style>
+      .tabnav .tablist {
+        display: flex;
+        align-items: flex-end;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid #999;
+      }
+      .tabnav .tablist .tabitem {
+        margin-bottom: -1px;
+        border-bottom: 1px solid transparent;
+        color: #999;
+      }
+      .tabnav .tablist .tabitem .tab {
+        display: block;
+        margin: 0;
+        padding: 16px;
+        border: 0;
+        background: none;
+        font: inherit;
+        font-size: 16px;
+        line-height: normal;
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .tabnav .tablist .tabitem.active {
+        border-color: #000;
+        font-weight: bold;
+        color: #000;
+      }
+
+      .tabcontent {
+        position: relative;
+        padding: 16px;
+      }
+      .tabpanel {
+        visibility: hidden;
+        position: absolute;
+      }
+      .tabpanel.active {
+        visibility: visible;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tabnav">
+      <ul class="tablist">
+        <li class="tabitem active">
+          <a href="javascript:void(0);" class="tab" aria-current="page"
+            >page nav1</a
+          >
+        </li>
+        <li class="tabitem">
+          <a href="javascript:void(0);" class="tab">page nav2</a>
+        </li>
+        <li class="tabitem">
+          <a href="javascript:void(0);" class="tab">page nav3</a>
+        </li>
+        <li class="tabitem">
+          <button type="button" class="tab">page nav4</button>
+        </li>
+      </ul>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="tabs">
+      <div class="tabnav">
+        <div class="tablist" role="tablist">
+          <div class="tabitem active" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-a-1"
+              aria-selected="true"
+              tabindex="0"
+              >tab-a-1</a
+            >
+          </div>
+          <div class="tabitem" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-a-2"
+              aria-selected="false"
+              tabindex="-1"
+              >tab-a-2</a
+            >
+          </div>
+          <div class="tabitem" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-a-3"
+              aria-selected="false"
+              tabindex="-1"
+              >tab-a-3</a
+            >
+          </div>
+          <div class="tabitem" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-a-4"
+              aria-selected="false"
+              tabindex="-1"
+              >tab-a-4</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="tabcontent">
+        <div
+          class="tabpanel active"
+          role="tabpanel"
+          data-key="tab-a-1"
+          aria-hidden="false"
+          tabindex="0"
+        >
+          tabpanel-a-1
+        </div>
+        <div
+          class="tabpanel"
+          role="tabpanel"
+          data-key="tab-a-2"
+          aria-hidden="true"
+          tabindex="0"
+        >
+          tabpanel-a-2
+        </div>
+        <div
+          class="tabpanel"
+          role="tabpanel"
+          data-key="tab-a-3"
+          aria-hidden="true"
+          tabindex="0"
+        >
+          tabpanel-a-3
+        </div>
+        <div
+          class="tabpanel"
+          role="tabpanel"
+          data-key="tab-a-4"
+          aria-hidden="true"
+          tabindex="0"
+        >
+          tabpanel-a-4
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tabnav">
+        <div class="tablist" role="tablist">
+          <div class="tabitem active" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-b-1"
+              aria-selected="true"
+              tabindex="0"
+              >tab-b-1</a
+            >
+          </div>
+          <div class="tabitem" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-b-2"
+              aria-selected="false"
+              tabindex="-1"
+              >tab-b-2</a
+            >
+          </div>
+          <div class="tabitem" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-b-3"
+              aria-selected="false"
+              tabindex="-1"
+              >tab-b-3</a
+            >
+          </div>
+          <div class="tabitem" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-b-4"
+              aria-selected="false"
+              tabindex="-1"
+              >tab-b-4</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="tabcontent">
+        <div
+          class="tabpanel active"
+          role="tabpanel"
+          data-key="tab-b-1"
+          aria-hidden="false"
+          tabindex="0"
+        >
+          tabpanel-b-1
+        </div>
+        <div
+          class="tabpanel"
+          role="tabpanel"
+          data-key="tab-b-2"
+          aria-hidden="true"
+          tabindex="0"
+        >
+          tabpanel-b-2
+        </div>
+        <div
+          class="tabpanel"
+          role="tabpanel"
+          data-key="tab-b-3"
+          aria-hidden="true"
+          tabindex="0"
+        >
+          tabpanel-b-3
+        </div>
+        <div
+          class="tabpanel"
+          role="tabpanel"
+          data-key="tab-b-4"
+          aria-hidden="true"
+          tabindex="0"
+        >
+          tabpanel-b-4
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tabnav">
+        <div class="tablist" role="tablist">
+          <div class="tabitem active" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-c-1"
+              >tab-c-1</a
+            >
+          </div>
+          <div class="tabitem" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-c-2"
+              >tab-c-2</a
+            >
+          </div>
+          <div class="tabitem" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-c-3"
+              >tab-c-3</a
+            >
+          </div>
+          <div class="tabitem" role="none">
+            <a
+              href="javascript:void(0);"
+              class="tab"
+              role="tab"
+              data-key="tab-c-4"
+              >tab-c-4</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="tabcontent">
+        <div class="tabpanel active" role="tabpanel" data-key="tab-c-1">
+          tabpanel-c-1
+        </div>
+        <div class="tabpanel" role="tabpanel" data-key="tab-c-2">
+          tabpanel-c-2
+        </div>
+        <div class="tabpanel" role="tabpanel" data-key="tab-c-3">
+          tabpanel-c-3
+        </div>
+        <div class="tabpanel" role="tabpanel" data-key="tab-c-4">
+          tabpanel-c-4
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        tab.init();
+      });
+
+      const tab = (function () {
+        const SELECTOR = {
+          TABLIST: '[role="tablist"]',
+          TAB: '[role="tab"]',
+          TABPANEL: '[role="tabpanel"]',
+        };
+
+        const init = function () {
+          if (!document.querySelectorAll(SELECTOR.TAB).length) {
+            return;
+          }
+
+          settingTab();
+
+          document.querySelectorAll(SELECTOR.TAB).forEach(function (tab) {
+            tab.addEventListener('click', handleTabClick);
+          });
+
+          document
+            .querySelectorAll(SELECTOR.TABLIST)
+            .forEach(function (tablist) {
+              tablist.addEventListener('keydown', handleTabKeydown);
+            });
+        };
+
+        const settingTab = function (tablist) {
+          document.querySelectorAll(SELECTOR.TAB).forEach(function (tab) {
+            let key = tab.getAttribute('data-key');
+            let tabpanel = document.querySelector(
+              SELECTOR.TABPANEL + '[data-key="' + key + '"]'
+            );
+
+            if (key && tabpanel) {
+              if (!tab.getAttribute('id')) {
+                tab.setAttribute('id', '__TAB__' + key);
+              }
+
+              if (!tabpanel.getAttribute('id')) {
+                tabpanel.setAttribute('id', '__TABPANEL__' + key);
+              }
+
+              tab.setAttribute('aria-controls', tabpanel.getAttribute('id'));
+              tabpanel.setAttribute('aria-labelledby', tab.getAttribute('id'));
+            }
+
+            if (tab.parentNode.classList.contains('active')) {
+              tab.setAttribute('aria-selected', true);
+              tab.setAttribute('tabindex', 0);
+            } else {
+              tab.setAttribute('aria-selected', false);
+              tab.setAttribute('tabindex', -1);
+            }
+          });
+
+          document
+            .querySelectorAll(SELECTOR.TABPANEL)
+            .forEach(function (tabpanel) {
+              if (tabpanel.classList.contains('active')) {
+                tabpanel.setAttribute('aria-hidden', false);
+              } else {
+                tabpanel.setAttribute('aria-hidden', true);
+              }
+              tabpanel.setAttribute('tabindex', 0);
+            });
+        };
+
+        const activeTab = function (tab) {
+          let this_tab = tab;
+          let this_tabitem = tab.parentNode;
+          let tabitems = this_tabitem.parentNode.children;
+
+          this_tab.setAttribute('aria-selected', true);
+          this_tab.setAttribute('tabindex', 0);
+          this_tabitem.classList.add('active');
+
+          Array.from(tabitems).forEach(function (tabitem) {
+            let tab = tabitem.children[0];
+
+            if (tabitem !== this_tabitem) {
+              tab.setAttribute('aria-selected', false);
+              tab.setAttribute('tabindex', -1);
+              tabitem.classList.remove('active');
+            }
+          });
+        };
+
+        const activeTabpanel = function (tabpanel) {
+          let this_tabpanel = tabpanel;
+          let tabpanels = tabpanel.parentNode.children;
+
+          this_tabpanel.setAttribute('aria-hidden', false);
+          this_tabpanel.classList.add('active');
+
+          Array.from(tabpanels).forEach(function (tabpanel) {
+            if (tabpanel !== this_tabpanel) {
+              tabpanel.setAttribute('aria-hidden', true);
+              tabpanel.classList.remove('active');
+            }
+          });
+        };
+
+        const openTab = function (tab) {
+          let this_tab = tab;
+          let this_tabpanel = document.getElementById(
+            tab.getAttribute('aria-controls')
+          );
+
+          if (this_tab) activeTab(this_tab);
+          if (this_tabpanel) activeTabpanel(this_tabpanel);
+        };
+
+        const handleTabClick = function (event) {
+          openTab(event.currentTarget);
+        };
+
+        const handleTabKeydown = function (event) {
+          if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+            let tab = event.target;
+            let tablist = event.currentTarget;
+            let tabitem = tab.parentNode;
+            let tabitems = Array.from(tablist.children);
+            let tab_index = tabitems.indexOf(tabitem);
+            let tab_length = tablist.childElementCount - 1;
+            let curernt_index = 0;
+            let prev_index = tab_index;
+
+            if (event.key === 'ArrowRight') {
+              curernt_index = tab_index + 1;
+
+              if (curernt_index > tab_length) {
+                curernt_index = 0;
+              }
+            }
+
+            if (event.key === 'ArrowLeft') {
+              curernt_index = tab_index - 1;
+
+              if (curernt_index < 0) {
+                curernt_index = tab_length;
+              }
+            }
+
+            tabitems[curernt_index].children[0].focus();
+            tabitems[curernt_index].children[0].setAttribute('tabindex', 0);
+            tabitems[prev_index].children[0].setAttribute('tabindex', -1);
+          }
+        };
+
+        return {
+          init: init,
+          open: openTab,
+        };
+      })();
+    </script>
+  </body>
+</html>

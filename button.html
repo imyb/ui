@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button</title>
+    <style>
+      .btn {
+        --btn-base-color: #373bf6;
+        --btn-base-text-color: #fff;
+
+        --btn-height: 38px;
+        --btn-padding-x: 16px;
+        --btn-padding-y: 4px;
+        --btn-border-radius: 4px;
+        --btn-border-style: solid;
+        --btn-border-width: 0;
+        --btn-border-color: var(--btn-base-color);
+        --btn-background-color: var(--btn-base-color);
+        --btn-font-size: 16px;
+        --btn-font-weight: normal;
+        --btn-line-height: normal;
+        --btn-text-color: var(--btn-base-text-color);
+
+        --btn-hover-base-color: #0004ff;
+        --btn-hover-base-text-color: var(--btn-base-text-color);
+        --btn-hover-border-color: var(--btn-hover-base-color);
+        --btn-hover-background-color: var(--btn-hover-base-color);
+        --btn-hover-text-color: var(--btn-hover-base-text-color);
+
+        --btn-active-base-color: var(--btn-base-color);
+        --btn-active-base-text-color: var(--btn-base-text-color);
+        --btn-active-border-color: var(--btn-active-base-color);
+        --btn-active-background-color: var(--btn-active-base-color);
+        --btn-active-text-color: var(--btn-active-base-text-color);
+
+        --btn-disabled-base-color: var(--btn-base-color);
+        --btn-disabled-base-text-color: var(--btn-base-text-color);
+        --btn-disabled-border-color: var(--btn-disabled-base-color);
+        --btn-disabled-background-color: var(--btn-disabled-base-color);
+        --btn-disabled-text-color: var(--btn-disabled-base-text-color);
+        --btn-disabled-opacity: 0.6;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        height: var(--btn-height);
+        margin: 0;
+        padding: var(--btn-padding-y) var(--btn-padding-x);
+        border-radius: var(--btn-border-radius);
+        border-style: var(--btn-border-style);
+        border-color: var(--btn-border-color);
+        border-width: var(--btn-border-width);
+        background-color: var(--btn-background-color);
+        font-size: var(--btn-font-size);
+        font-weight: var(--btn-font-weight);
+        line-height: var(--btn-line-height);
+        color: var(--btn-text-color);
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+      .btn[disabled] {
+        border-color: var(--btn-disabled-border-color);
+        background-color: var(--btn-disabled-background-color);
+        color: var(--btn-disabled-text-color);
+        opacity: var(--btn-disabled-opacity);
+        cursor: not-allowed;
+      }
+      .btn:hover:not([disabled]) {
+        border-color: var(--btn-hover-border-color);
+        background-color: var(--btn-hover-background-color);
+        color: var(--btn-hover-text-color);
+      }
+
+      .btn[data-size='xs'] {
+        --btn-height: 22px;
+        --btn-padding-x: 6px;
+        --btn-padding-y: 2px;
+        --btn-font-size: 12px;
+      }
+      .btn[data-size='sm'] {
+        --btn-height: 30px;
+        --btn-padding-x: 8px;
+        --btn-padding-y: 4px;
+        --btn-font-size: 14px;
+      }
+      .btn[data-size='lg'] {
+        --btn-height: 46px;
+        --btn-padding-x: 16px;
+        --btn-padding-y: 6px;
+        --btn-font-size: 18px;
+      }
+      .btn[data-size='xl'] {
+        --btn-height: 54px;
+        --btn-padding-x: 22px;
+        --btn-padding-y: 5px;
+        --btn-font-size: 24px;
+      }
+
+      .btn[data-type*='prime'] {
+        --btn-base-color: #373bf6;
+        --btn-base-text-color: #fff;
+        --btn-hover-base-color: #0004e2;
+      }
+      .btn[data-type*='second'] {
+        --btn-base-color: #989898;
+        --btn-base-text-color: #fff;
+        --btn-hover-base-color: #797979;
+      }
+      .btn[data-type*='third'] {
+        --btn-base-color: #008d59;
+        --btn-base-text-color: #fff;
+        --btn-hover-base-color: #00784c;
+      }
+      .btn[data-type*='fourth'] {
+        --btn-base-color: #a80000;
+        --btn-base-text-color: #fff;
+        --btn-hover-base-color: #810000;
+      }
+
+      .btn[data-type*='dark'] {
+        --btn-base-color: #303030;
+        --btn-base-text-color: #fff;
+        --btn-hover-base-color: #000000;
+      }
+      .btn[data-type*='light'] {
+        --btn-base-color: #eee;
+        --btn-base-text-color: #000;
+        --btn-hover-base-color: #dfdfdf;
+      }
+
+      .btn[data-type*='outline'] {
+        --btn-border-width: 2px;
+        --btn-background-color: transparent;
+        --btn-text-color: var(--btn-base-color);
+
+        --btn-hover-base-color: var(--btn-base-color);
+        --btn-hover-base-text-color: var(--btn-base-text-color);
+
+        --btn-disabled-base-text-color: var(--btn-base-color);
+        --btn-disabled-background-color: var(--btn-background-color);
+      }
+
+      .btn[data-type*='round'] {
+        --btn-border-radius: var(--btn-height);
+      }
+
+      .btn[data-type*='light'][data-type*='outline'] {
+        --btn-text-color: var(--btn-base-text-color);
+        --btn-disabled-base-text-color: var(--btn-base-text-color);
+      }
+
+      .btn > .icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: red;
+      }
+      .btn > .text {
+        font: inherit;
+        color: inherit;
+      }
+      .btn > .icon + .text {
+        margin-left: 8px;
+      }
+      .btn > .text + .icon {
+        margin-left: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" class="btn">button</button>
+    <a href="javascript:void(0);" class="btn" role="button">anchor</a>
+    <input type="button" class="btn" value="input" />
+    <input type="submit" class="btn" value="submit" />
+    <input type="reset" class="btn" value="reset" />
+
+    <br />
+    <br />
+
+    <button type="button" class="btn" data-type="prime">prime</button>
+    <button type="button" class="btn" data-type="second">second</button>
+    <button type="button" class="btn" data-type="third">third</button>
+    <button type="button" class="btn" data-type="fourth">fourth</button>
+    <button type="button" class="btn" data-type="dark">dark</button>
+    <button type="button" class="btn" data-type="light">light</button>
+
+    <br />
+    <br />
+
+    <button type="button" class="btn" data-type="prime-outline">outline</button>
+    <button type="button" class="btn" data-type="second-outline">
+      outline
+    </button>
+    <button type="button" class="btn" data-type="third-outline">outline</button>
+    <button type="button" class="btn" data-type="fourth-outline">
+      outline
+    </button>
+    <button type="button" class="btn" data-type="dark-outline">outline</button>
+    <button type="button" class="btn" data-type="light-outline">outline</button>
+
+    <br />
+    <br />
+
+    <button type="button" class="btn" data-type="prime-round">round</button>
+    <button type="button" class="btn" data-type="second-round">round</button>
+    <button type="button" class="btn" data-type="third-round">round</button>
+    <button type="button" class="btn" data-type="fourth-round">round</button>
+    <button type="button" class="btn" data-type="dark-round">round</button>
+    <button type="button" class="btn" data-type="light-round">round</button>
+
+    <br />
+    <br />
+
+    <button type="button" class="btn" data-type="prime-outline-round">
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="second-outline-round">
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="third-outline-round">
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="fourth-outline-round">
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="dark-outline-round">
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="light-outline-round">
+      outline-round
+    </button>
+
+    <br />
+    <br />
+
+    <button type="button" class="btn" data-type="prime" data-size="xs">
+      xs button
+    </button>
+    <button type="button" class="btn" data-type="prime" data-size="sm">
+      sm button
+    </button>
+    <button type="button" class="btn" data-type="prime" data-size="md">
+      md button
+    </button>
+    <button type="button" class="btn" data-type="prime" data-size="lg">
+      lg button
+    </button>
+    <button type="button" class="btn" data-type="prime" data-size="xl">
+      xl button
+    </button>
+
+    <br />
+    <br />
+
+    <button type="button" class="btn" data-type="prime" disabled>prime</button>
+    <button type="button" class="btn" data-type="second" disabled>
+      second
+    </button>
+    <button type="button" class="btn" data-type="third" disabled>third</button>
+    <button type="button" class="btn" data-type="fourth" disabled>
+      fourth
+    </button>
+    <button type="button" class="btn" data-type="dark" disabled>dark</button>
+    <button type="button" class="btn" data-type="light" disabled>light</button>
+
+    <br />
+    <br />
+
+    <button type="button" class="btn" data-type="prime-outline" disabled>
+      prime
+    </button>
+    <button type="button" class="btn" data-type="second-outline" disabled>
+      second
+    </button>
+    <button type="button" class="btn" data-type="third-outline" disabled>
+      third
+    </button>
+    <button type="button" class="btn" data-type="fourth-outline" disabled>
+      fourth
+    </button>
+    <button type="button" class="btn" data-type="dark-outline" disabled>
+      dark
+    </button>
+    <button type="button" class="btn" data-type="light-outline" disabled>
+      light
+    </button>
+
+    <br />
+    <br />
+
+    <button type="button" class="btn" data-type="prime-outline-round" disabled>
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="second-outline-round" disabled>
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="third-outline-round" disabled>
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="fourth-outline-round" disabled>
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="dark-outline-round" disabled>
+      outline-round
+    </button>
+    <button type="button" class="btn" data-type="light-outline-round" disabled>
+      outline-round
+    </button>
+
+    <br />
+    <br />
+
+    <button type="button" class="btn">
+      <i class="icon" aria-hidden="true"></i><span class="text">button</span>
+    </button>
+    <button type="button" class="btn">
+      <span class="text">button</span><i class="icon" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn" aria-label="label">
+      <i class="icon" aria-hidden="true"></i>
+    </button>
+  </body>
+</html>
